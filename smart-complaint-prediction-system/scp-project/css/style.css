@@ -1,0 +1,99 @@
+:root {
+    --orange: oklch(65% 0.15 35);
+    --orange-dark: oklch(45% 0.18 35);
+    --purple: oklch(58% 0.16 290);
+    --black: oklch(15% 0.01 35);
+    --black-light: oklch(25% 0.01 35);
+    --text-primary: oklch(15% 0.01 35);
+    --text-secondary: oklch(45% 0.01 35);
+    --border: oklch(85% 0.01 35);
+    --bg-primary: oklch(98% 0.005 35);
+    --bg-secondary: oklch(95% 0.005 35);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui; background: var(--bg-primary); color: var(--text-primary); }
+
+h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; }
+p { color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+
+button { font-family: inherit; cursor: pointer; border: none; border-radius: 6px; padding: 0.75rem 1.5rem; font-weight: 600; transition: all 150ms; min-height: 44px; }
+.btn-primary { background: var(--orange); color: white; }
+.btn-primary:hover { background: var(--orange-dark); box-shadow: 0 4px 12px rgba(220, 100, 30, 0.3); }
+
+input, select, textarea { font-family: inherit; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; width: 100%; font-size: 1rem; margin-bottom: 0.5rem; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(220, 100, 30, 0.1); }
+
+label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; }
+.form-group { margin-bottom: 1.5rem; }
+
+.alert { padding: 1rem; border-radius: 6px; margin-bottom: 1rem; display: none; border-left: 3px solid; font-size: 0.9rem; }
+.alert.show { display: block; animation: slideIn 300ms ease-out; }
+.alert-success { background: rgba(76, 175, 80, 0.1); color: #2e7d32; border-color: #4caf50; }
+.alert-error { background: rgba(244, 67, 54, 0.1); color: #c62828; border-color: #f44336; }
+@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.page { display: none; }
+.page.active { display: block; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+.auth-layout { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.auth-visual { background: linear-gradient(135deg, var(--black) 0%, var(--purple) 100%); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 3rem; text-align: center; gap: 2rem; }
+.auth-form { background: var(--bg-primary); display: flex; align-items: center; justify-content: center; padding: 3rem; }
+.auth-card { width: 100%; max-width: 400px; }
+
+.radar { width: 120px; height: 120px; position: relative; margin: 2rem auto; }
+.radar-ring { position: absolute; border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: pulse 2s ease-out infinite; }
+.radar-ring:nth-child(1) { width: 30px; height: 30px; }
+.radar-ring:nth-child(2) { width: 60px; height: 60px; animation-delay: 0.5s; }
+.radar-ring:nth-child(3) { width: 90px; height: 90px; animation-delay: 1s; }
+.radar-ring:nth-child(4) { width: 120px; height: 120px; animation-delay: 1.5s; }
+@keyframes pulse { 0% { opacity: 1; transform: translate(-50%, -50%) scale(0.8); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(1); } }
+
+.brand { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 1rem; }
+.brand-icon { font-size: 2rem; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+.header { background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%); color: white; padding: 1rem 0; border-bottom: 2px solid var(--orange); position: sticky; top: 0; z-index: 100; }
+.header-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.header-brand { display: flex; align-items: center; gap: 1rem; font-size: 1.25rem; font-weight: 700; }
+.header-nav { display: flex; gap: 1.5rem; margin-left: auto; align-items: center; }
+.header-nav a { color: white; padding: 0.5rem 1rem; border-radius: 4px; transition: all 150ms; cursor: pointer; font-size: 0.9rem; }
+.header-nav a:hover { background: var(--orange); }
+.user-badge { background: var(--orange); padding: 0.5rem 1rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
+.logout-btn { background: transparent; color: white; border: 1px solid white; padding: 0.5rem 1rem; }
+.logout-btn:hover { background: var(--orange); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.stat-card { background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); }
+.stat-value { font-size: 2.5rem; font-weight: 700; color: var(--orange); margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.9rem; color: var(--text-secondary); font-weight: 600; }
+
+.card { background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; }
+
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--black-light); color: white; padding: 1rem; text-align: left; font-weight: 600; }
+td { padding: 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
+
+.badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 4px; font-size: 0.8rem; font-weight: 600; }
+.badge-open { background: rgba(33, 150, 243, 0.1); color: #1976d2; }
+.badge-in-progress { background: rgba(255, 152, 0, 0.1); color: #f57c00; }
+.badge-preventive { background: rgba(156, 39, 176, 0.1); color: #6a1b9a; }
+
+.heatmap-row { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; margin-bottom: 1rem; }
+.heatmap-cells { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem; }
+.heatmap-cell { aspect-ratio: 1; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; cursor: pointer; }
+.risk-low { background: #4caf50; }
+.risk-medium { background: #ff9800; }
+.risk-high { background: #f44336; }
+
+textarea { resize: vertical; min-height: 100px; }
+
+@media (max-width: 768px) {
+    .auth-layout { grid-template-columns: 1fr; }
+    .auth-visual { display: none; }
+}
